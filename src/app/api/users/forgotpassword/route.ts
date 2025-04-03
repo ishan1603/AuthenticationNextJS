@@ -35,7 +35,9 @@ export async function POST(request: NextRequest) {
     await user.save();
 
     // Create a reset link
-    const resetLink = `${process.env.DOMAIN}/reset-password?token=${resetToken}`;
+    const resetLink = `${
+      process.env.DOMAIN
+    }/reset-password/${encodeURIComponent(resetToken)}`;
 
     // Configure Nodemailer transporter
     var transporter = nodemailer.createTransport({
@@ -52,9 +54,7 @@ export async function POST(request: NextRequest) {
       from: process.env.MAILUSERNAME,
       to: user.email,
       subject: "Reset Your Password",
-      html: `<p>Click the link below to reset your password:</p>
-             <a href="${resetLink}">${resetLink}</a>
-             <p>If you didn't request this, please ignore this email.</p>`,
+      html: `<p>Click <a href="${resetLink}">here</a> to reset your password.</p>`,
     });
 
     return NextResponse.json({ message: "Reset link sent to your email" });
