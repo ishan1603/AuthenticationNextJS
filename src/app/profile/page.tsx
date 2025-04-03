@@ -28,29 +28,35 @@ export default function ProfilePage() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1>Profile</h1>
-      <hr />
-      <p>Profile page</p>
-      <h2 className="p-3 rounded bg-green-500">
-        {data === "Nothing" ? (
-          "nothing"
-        ) : (
-          <Link href={`/profile/${data}`}>{data}</Link>
-        )}
-      </h2>
-      <hr />
-      <button
-        onClick={logout}
-        className="bg-blue-500 mt-4 hover:bg-blue-700 text-white font bold py-2 px-4 rounded"
-      >
-        Logout
-      </button>
-      <button
-        onClick={getUserDetails}
-        className="bg-red-500 mt-4 hover:bg-red-700 text-white font bold py-2 px-4 rounded"
-      >
-        Get User Details
-      </button>
+      <div className="bg-gray-800 flex flex-col items-center justify-center px-5 py-2 rounded-2xl w-100 ">
+        <h1 className="text-3xl mb-8 mt-3 text-gray-100 font-bold">Profile</h1>
+        <hr />
+        <h2
+          className={`p-3 rounded mb-3 ${
+            data === "Nothing" ? "bg-red-500" : "bg-green-500"
+          }`}
+        >
+          {data === "Nothing" ? (
+            "No user found. Click to get Details"
+          ) : (
+            <Link href={`/profile/${data}`}>{data}</Link>
+          )}
+        </h2>
+
+        <hr />
+        <button
+          onClick={logout}
+          className="bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-400 cursor-pointer px-6 py-2 rounded-lg focus:outline-none focus:ring-2 transition-all duration-200  mt-3 hover:scale-105 mb-3"
+        >
+          Logout
+        </button>
+        <button
+          onClick={getUserDetails}
+          className="bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-400 cursor-pointer px-6 py-2 rounded-lg focus:outline-none focus:ring-2 transition-all duration-200 mb-8 mt-3 hover:scale-105"
+        >
+          Get User Details
+        </button>
+      </div>
     </div>
   );
 }
