@@ -109,7 +109,7 @@ export default function LoginPage() {
             className={`w-full py-3 px-4 rounded-lg font-medium text-white transition-all ${
               buttonDisabled || loading
                 ? "bg-gray-300 cursor-not-allowed"
-                : "bg-emerald-600 hover:bg-emerald-700 hover:scale-[1.01]"
+                : "bg-emerald-600 hover:bg-emerald-700 hover:scale-[1.01] cursor-pointer"
             } focus:outline-none focus:ring-2 focus:ring-emerald-500`}
           >
             {loading ? (
